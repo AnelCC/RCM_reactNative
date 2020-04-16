@@ -21,8 +21,12 @@ class PeopleList extends Component {
 }
 
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: Colors.white,
+  container: {
+    flex: 1,
+    width: 353,
+    flexWrap: 'wrap',
+    paddingTop: 20,
+    paddingLeft: 20,
   },
 });
 
