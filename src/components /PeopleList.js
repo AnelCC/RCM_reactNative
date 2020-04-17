@@ -2,12 +2,18 @@ import React, {Component} from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import PeopleItem from './PeopleItem';
+import Icon from 'react-native-vector-icons/RNIMigration';
 
 const mapStateToProps = state => {
   return {people: state.people};
 };
 
 class PeopleList extends Component {
+  static navigationOptions = {
+    tabBarIcon: ({tintColor}) => {
+      <Icon name={'archive'} size={50} color={tintColor} />
+    },
+  }
   render() {
     return (
       <View style={styles.container}>
