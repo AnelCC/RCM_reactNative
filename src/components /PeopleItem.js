@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Text, Icon} from 'react-native';
+import {StyleSheet, View, Image, Text, Icon, FlatList} from 'react-native';
 import {connect, Provider} from 'react-redux';
 import PeopleList from './PeopleList';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 //import {getTheme} from 'react-native-material-kit';
-import * as actions from '../actions'
+//import Icon as actions from 'react-native-material-ki';
+import * as actions from '../actions';
 
 //const  theme = getTheme();
 const mapStateToProps = (state) => {
@@ -12,25 +13,38 @@ const mapStateToProps = (state) => {
 };
 
 const PeopleItem = (props) => {
-  render() {
-    return (
-      <View>
-          <Image />
-          <Icon />
-        <Text> {props.people.firstName}{props.people.lastName}</Text>
-          <Text> {props.people.company}</Text>
-      </View>
-    );
-  }
+  console.log("PeopleItem here" + props.people.firstName)
+  const fullName = props.people.firstName+" "+props.people.lastName
+  console.log("PeopleItem here full name " +fullName)
+  return (
+    <View style={styles.container}>
+      <Image source={require('../image/background.jpeg')} style={styles.card} />
+      <Image source={require('../image/woman.png')} style={styles.icon} />
+      <Text style={styles.title}>
+        {props.people.firstName} {props.people.lastName}
+      </Text>
+      <Text style={styles.description}>{props.people.company}</Text>
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
     card: {
         marginTop: 20,
     },
-    title: {
-        top: 20,
-        left: 80,
+  title: {
+        position: 'absolute',
+        top: 200,
+        left: 50,
+        color: 'white',
         fontSize: 24,
+    },
+    description: {
+        position: 'absolute',
+        top: 230,
+        left: 50,
+        color: 'white',
+        fontSize: 18,
     },
     image: {
         height: 100,
@@ -41,8 +55,8 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        top: 15,
-        left: 0,
+        top: 50,
+        left: 30,
         color: 'white',
         backgroundColor: 'rgba(255, 255, 255, 0)',
     },
@@ -55,4 +69,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default connect(mapStateToProps)(PeopleList);
+export default connect(null, actions)(PeopleItem);

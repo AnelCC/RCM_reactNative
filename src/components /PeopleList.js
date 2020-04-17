@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, FlatList, Text, SafeAreaView} from 'react-native';
-import {connect, Provider} from 'react-redux';
+import {StyleSheet, View, FlatList} from 'react-native';
+import {connect} from 'react-redux';
 import PeopleItem from './PeopleItem';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {people: state.people};
 };
 
 class PeopleList extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           data={this.props.people}
           renderItem={({item}) => <PeopleItem people={item} />}></FlatList>
@@ -22,8 +21,8 @@ class PeopleList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: 353,
+    height: '100%',
+    width: '100%',
     flexWrap: 'wrap',
     paddingTop: 20,
     paddingLeft: 20,
