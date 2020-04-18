@@ -3,6 +3,7 @@ import {StyleSheet, View, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import PeopleItem from './PeopleItem';
 import Icon from 'react-native-vector-icons/RNIMigration';
+import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 
 const mapStateToProps = state => {
   return {people: state.people};
@@ -11,7 +12,7 @@ const mapStateToProps = state => {
 class PeopleList extends Component {
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => {
-      <Icon name={'archive'} size={50} color={tintColor} />
+      <Icon name={'people'} size={50} color={tintColor} />;
     },
   }
   render() {
@@ -27,6 +28,7 @@ class PeopleList extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.light,
     height: '100%',
     width: '100%',
     flexWrap: 'wrap',
